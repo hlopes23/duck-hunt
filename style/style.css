@@ -1,0 +1,160 @@
+body {
+    background-color: rgba(0, 0, 0, 1);
+    height: 95vh;
+    flex-flow: column wrap;
+    color: salmon
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+header{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    height: fit-content;
+    justify-content: center;
+}
+
+main{
+    margin-top: 2%;
+    display: flex;
+    width: 100%;
+    flex-flow: column wrap;
+    align-items: center;
+    min-height: 30%;
+    height: 20%;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+footer > img {
+    width: 30%;
+    height: 10%;
+}
+
+.tittle{
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 60%;
+    height: 100%;
+    align-content: center;
+}
+
+.menu{
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 50%;
+    width: 40%;
+    align-content: center;
+}
+
+.score{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    flex-basis: 45%;
+    width: 50%;
+}
+
+.row{
+    display: flex;
+    flex-flow: row wrap;
+   width: 100%;
+   flex:1;
+}
+
+.pointer{
+    display: flex;
+    flex-basis: 15%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pointer > img {
+    width: 20%;
+    height: 35%;
+}
+
+.game, .level, .clay{
+    padding-left: 3%;
+    flex-basis: 42.5%;
+    align-content: center;
+}
+
+.game > img {
+    width: 40%;
+    height: 25%;
+}
+
+.level > img {
+    width: 40%;
+    height: 25%;
+}
+
+.clay > img {
+    width: 90%;
+    height: 25%;
+}
+
+.duck, .hunt{
+    display: flex;
+    width: 70%;
+    flex-basis: 50%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.duck{
+    border-bottom: 5px solid rgb(233, 161, 44);
+    align-items: flex-end;
+}
+
+
+.hunt{
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.duck > img {
+    width: 79%;
+    height: 50%;
+}
+
+.hunt > img {
+    width: 79%;
+    height: 50%;
+}
+
+#text{
+    display: flex;
+    flex-basis: 60%;
+    height: 30%;
+    padding-bottom: 5px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#text > img {
+    width: 40%;
+    height: 30%;
+}
+#score{
+    display: flex;
+    flex-basis: 40%;
+    height: 30%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+    color: #1AB00C;
+    align-items: flex-end;
+    padding-left: 1%;
+    padding-bottom: 0%;
+}
+
+
