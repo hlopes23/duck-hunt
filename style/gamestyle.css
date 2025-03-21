@@ -1,0 +1,35 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+
+    background-color: rgb(6, 208, 244);
+
+    background-image: 
+        url('/img/herbs.webp'), 
+        url('/img/plant.webp'), 
+        url('/img/tree.webp');
+
+    background-position: 
+    center bottom,
+    75% 82%,
+    10% 55%;
+    
+    background-repeat: 
+        no-repeat, 
+        no-repeat, 
+        no-repeat;
+
+        background-size: 
+    100% 90%,  
+    auto 200px,  
+    400px;  
+
+    background-attachment: 
+    fixed,
+    fixed,
+    fixed;
+}
