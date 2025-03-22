@@ -1,8 +1,8 @@
 body {
     background-color: rgba(0, 0, 0, 1);
-    height: 95vh;
+    height: 90vh;
     flex-flow: column wrap;
-    color: salmon
+  
 }
 
 body * {
