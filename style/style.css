@@ -75,9 +75,10 @@ footer > img {
     flex-basis: 15%;
     justify-content: flex-end;
     align-items: center;
+    visibility: hidden;
 }
 
-.pointer > img {
+.pointerImg {
     width: 20%;
     height: 35%;
 }
@@ -115,6 +116,7 @@ footer > img {
     border-bottom: 5px solid rgb(233, 161, 44);
     align-items: flex-end;
 }
+
 
 
 .hunt{
