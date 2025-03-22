@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doggy move</title>
+    <link rel="stylesheet" href="doggystyle.css" />
+  </head>
+  <body>
+    <div id="passeio">
+      <div id="dog"></div>
+    </div>
+  </body>
+  <script>
+    let positionsAndSize = [{x: -5, y: -1, w: 55, h: 43}, {x: -66, y: -1, w:55, h: 43}, {x:-126, y: -1, w:55, h: 43}, {x: -184, y: -1, w:55, h: 43}, {x: -245, y:-3, w: 55, h: 43}];
+    const dog = document.getElementById("dog");
+    const playground = document.getElementById("passeio");
+    let interval;
+    let frameIndex = 0;
+    let positionX = 0;
+    let positionY = 0;
+    let width = 0;
+    let height = 0; 
+    const frameWidth = 60;
+    const frames = 5;
+    let playgroundWidth = playground.offsgtetWidth;
+
+
+
+    function moveX() {
+     interval = setInterval( () => {
+
+        if(frameIndex < positionsAndSize.length -1){
+        positionX = positionsAndSize[frameIndex].x;
+        positionY = positionsAndSize[frameIndex].y;
+        width = positionsAndSize[frameIndex].w;
+        height = positionsAndSize[frameIndex].h;
+        dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
+        dog.style.width = `${width}px`;
+        dog.style.height = `${height}px`;
+        frameIndex++
+        }
+        else{
+            frameIndex= 0;
+        }
+
+      }, 100);
+    }
+
+
+    dog.addEventListener("mouseover", moveX);
+    dog.addEventListener('mouseout', ()=> {
+        clearInterval(interval);
+    });
+
+
+  </script>
+</html>
