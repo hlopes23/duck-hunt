@@ -48,7 +48,7 @@ function moveX() {
       dog.style.width = `${width}px`;
       dog.style.height = `${height}px`;
       xTranslate += 15;
-      dog.style.transform = `translateX(${xTranslate}px) scale(3)`;
+      dog.style.transform = `translateX(${xTranslate}px) scale(3.5)`;
       frameIndex = (frameIndex + 1) % positionsAndSize.length;
     } else {
       frameIndex = 0;
@@ -74,7 +74,7 @@ function smell() {
       dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
       dog.style.width = `${width}px`;
       dog.style.height = `${height}px`;
-      dog.style.transform = `translateX(${xTranslate}px) scale(3)`;
+      dog.style.transform = `translateX(${xTranslate}px) scale(3.5)`;
       
     
       i = (i === 3) ? 4 : 3;
