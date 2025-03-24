@@ -1,10 +1,9 @@
 #passeio{
     position: absolute;
-    left: 40%;
-    top: 40%;
+    left: -5%;
+    top: 61%;
     width: 30%;
     height: 20%;
-    border: 1px solid black;
 }
 
 #dog{
@@ -12,6 +11,4 @@
     top: 40%;
     left: 5%;
     background: url('img/sprite.webp') no-repeat -5px -3px;
-	width: 53px;
-	height: 40px;
 }
