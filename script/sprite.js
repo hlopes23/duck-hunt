@@ -27,13 +27,13 @@ function purpleDuckHorizontalMove() {
             frameIndex = 0;
         }
 
-        if(positionX >= window.innerWidth) {
+        if(posX >= window.innerWidth) {
             clearInterval(horizontalMoveInterval);
             purpleDuck.style.visibility = "hidden";
         }
     }, 100);
 }
-purpleDuckHorizontalMove();
+
 
 let positionAndSizePurpleFallingDuck = [{x: -1, y: -238, w:31, h:29}, {x: -48, y: -237, w:31, h:29}];
 let fallingInterval;
@@ -59,7 +59,7 @@ function fallingDuck() {
             frameIndex = 1;
         }
 
-        if(positionY >= window.innerHeight) {
+        if(posY >= window.innerHeight) {
             clearInterval(fallingInterval);
             purpleDuck.style.visibility = "hidden";
         }
@@ -68,13 +68,58 @@ function fallingDuck() {
 
 purpleDuck.addEventListener("click", fallingDuck);
 
+let positionAndSizeDiagonalDuck = [{x: -134, y: -157, w:32, h:31}, {x: -171, y: -158, w:32, h:31}, {x: -213, y: -157, w:32, h:31}];
+let positionAndSizeTurningDuck = [{x: -135, y: -197, w:32, h:31}, {x: -171, y: -197, w:32, h:31}, {x: -212, y: -198, w:32, h:31}];
+let diagonalInterval;
+let turningInterval;
+let posXDiagonalDuck = 0;
+let posYDiagonalDuck = 0;
+const diagonalDuck = document.getElementById("duck");
 
-Array.prototype.sumNumbersOrStrings = () => {
-    for(let i = 0; i<Array.length; i++) {
-        
-    }
+function turningDuck () {
+    diagonalInterval = setInterval(() => {
+        if(frameIndex < positionAndSizeDiagonalDuck.length) {
+            positionX = positionAndSizeDiagonalDuck[frameIndex].x;
+            positionY =  positionAndSizeDiagonalDuck[frameIndex].y;
+            width =  positionAndSizeDiagonalDuck[frameIndex].w;
+            height =  positionAndSizeDiagonalDuck[frameIndex].h;
+            diagonalDuck.style.backgroundPosition = `${positionX}px ${positionY}px`;
+            diagonalDuck.style.width = `${width}px`;
+            diagonalDuck.style.height = `${height}px`;
+            frameIndex++;
+
+            posXDiagonalDuck += 15;
+            posYDiagonalDuck += 5;
+            diagonalDuck.style.transform = `translate(${posXDiagonalDuck}px, ${posYDiagonalDuck}px)`;
+        } else {
+            frameIndex = 0;
+        }
+
+        if(posXDiagonalDuck >= window.innerWidth || posYDiagonalDuck >= window.innerHeight) {
+            clearInterval(diagonalInterval);
+            turningInterval = setInterval(() => {
+                if(frameIndex < positionAndSizeTurningDuck.length) {
+                    positionX = positionAndSizeTurningDuck[frameIndex].x;
+                    positionY = positionAndSizeTurningDuck[frameIndex].y;
+                    width = positionAndSizeTurningDuck[frameIndex].w;
+                    height = positionAndSizeTurningDuck[frameIndex].h;
+                    diagonalDuck.style.backgroundPosition =  `${positionX}px ${positionY}px`;
+                    diagonalDuck.style.width = `${width}px`;
+                    diagonalDuck.style.height = `${height}px`;
+                    frameIndex++;
+                    
+                    posXDiagonalDuck -= 15;
+                    posYDiagonalDuck -= 5;
+                    diagonalDuck.style.transform = `translate(${posXDiagonalDuck}px, ${posYDiagonalDuck}px)`;
+
+                } else {
+                    frameIndex = 0;
+                }
+            },200)
+        }
+    }, 100)
 }
-
+turningDuck();
 
 
 
