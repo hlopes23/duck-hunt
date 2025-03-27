@@ -8,13 +8,8 @@ function move() {
 
     if (xTranslate >= end) {
       clearInterval(interval);
-      smell();
-      setTimeout (() => { 
-        dog.style.backgroundPosition = `${-5}px ${-59}px`;
-        dog.style.width = `${55}px`;
-        dog.style.height = `${50}px`;
-        jump();
-       }, 1500);
+      smell();   
+      setTimeout(jump,1000);
     }
 
 
@@ -72,7 +67,45 @@ function smell() {
 
 
 function jump() {
-dog.classList.add('jump');
+
+  dog.classList.add('transition');
+
+  frameIndex = 0;
+
+  interval = setInterval( () => {
+    positionX = jumpPositions[frameIndex].x;
+    positionY = jumpPositions[frameIndex].y;
+    width = jumpPositions[frameIndex].w;
+    height = jumpPositions[frameIndex].h;
+
+    switch (frameIndex) {
+
+      case 0:
+      dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
+      dog.style.width = `${width}px`;
+      dog.style.height = `${height}px`;
+      frameIndex++;
+      break;
+
+      case 1:
+      dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
+      dog.style.width = `${width}px`;
+      dog.style.height = `${height}px`;
+      dog.style.transform = `translate3d(900px, -250px, -150px) scale(3.5)`;
+      frameIndex++;
+      break;
+
+      case 2:
+        dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
+        dog.style.width = `${width}px`;
+        dog.style.height = `${height}px`;
+        dog.style.transform = `translate3d(1010px, 0px, -0px) scale(3.5)`;
+        dog.style.zIndex = 0;
+        frameIndex++;
+        break;
+
+    }
+  }, 400);
 }
 
 
@@ -87,9 +120,13 @@ let positionsAndSize = [
   { x: -126, y: -1, w: 55, h: 43 },
   { x: -184, y: -1, w: 55, h: 43 },
   { x: -245, y: -1, w: 55, h: 43 }, // smell
-  { x: -5, y: -59, w: 55, h: 50 } 
 ];
 
+let jumpPositions = [
+  { x: -5, y: -59, w: 55, h: 50 }, 
+  { x: -74, y: -60, w: 55, h: 50 }, 
+  { x: -135, y: -67, w: 55, h: 50 }
+];
 
 
 let dog = document.createElement("div");
@@ -108,9 +145,6 @@ let xTranslate = 0;
 let yTranslate = 0;
 let zTranslate = 0;
 let stopMiddle = false;
-
-
-
 
 
 move();

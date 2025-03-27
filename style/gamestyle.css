@@ -57,8 +57,13 @@ bottom: 0;
     left: 5%;
     background: url(/img/sprite.webp) no-repeat -5px -3px;
     z-index: 2;
+    
 }
 
+
+.transition{
+    transition: transform 1s;
+}
 
 #herbs{
     position: absolute;
@@ -73,45 +78,4 @@ bottom: 0;
     height: 100%;
     width: 100%;
     position:absolute; 
-}
-
-.jump{
-    animation: jump 2s ease-in-out forwards;
-}
-
-@keyframes jump {
-
-
-
-
-    0% {
-        width: 55px;
-        height: 50px;
-    }
-
-
-    25%{
-        width: 35px;
-        height: 46px;
-        transform: translateX(1010px) translateY(-250px) scale(3.5); 
-    }
-
-
-    50% {
-        background-position: -135px -67px;
-        transform:translateX(1100px) translateY(-40px) scale(3.5);
-        z-index: 0;
-    }
-
-    75%{
-        background-position: -135px -67px;
-        transform:translateX(1190px) translateY(-20px) scale(3.5);
-        z-index: 0;
-    }
-
-    100% {
-        background-position: -135px -67px;
-        transform:translateX(1100px) translateY(0px) scale(3.5);
-        z-index: 0;
-    }
 }
