@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duck Hunt</title>
-    <link rel="stylesheet" href="/style/gamestyle.css" />
-    <script src="/script/main.js" async></script>
-  </head>
-  <body>
-    <body>
-      <header></header>
-      <main>
+    <link rel="stylesheet" href="/style/gamestyle.css">
+    <script type="module" src="/script/game.js" async></script>
+    <script type="module" src="/script/sprite.js" async></script>
+</head>
+
+<body>
+    <header></header>
+    <main>
         <div id="herbs">
-          <img src="/img/herbs.webp" alt="herbs">
+            <img src="/img/herbs.webp" alt="herbs">
         </div>
-        <div id="path">
-        </div>
-      </main>
-      <footer></footer>
-    </body>
-  </body>
+        <div id="path"></div>
+    </main>
+    <footer>
+      <div id="container">
+        <div></div>
+        <div class="round">
+          <img src="/img/round.png" alt="round"></div>
+      </div>
+    <div id="container1">
+      <div class="bullets">
+            <div id="bullet">
+            <img src="/img/bullet.png" alt="bullet 1">
+            </div>
+            <div id="bullet">
+              <img src="/img/bullet.png" alt="bullet 2">
+            </div>
+            <div id="bullet">
+              <img src="/img/bullet.png" alt="bullet 3">
+            </div>
+      </div>
+      <div id="shot">
+        <img src="/img/Shot.png" alt="shots">
+      </div>
+            </div>
+    <div id="container2">
+      <div id="hit">
+        <img src="/img/hit.png" alt="hit">
+      </div>
+      <div class="duckIcon">
+        <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+       <img class = "icon" src="/img/duckIcon.png" alt="icon duck">
+      </div>
+    </div>
+    <div id="container3">
+      <div class ="points"></div>
+      <div class ="score">
+        <img src="/img/score.png" alt="SCORE">
+      </div>
+    </div>
+  </div>
+  </footer>
+</body>
 </html>
