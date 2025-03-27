@@ -40,7 +40,6 @@ function move() {
 }
 
 
-
 function smell() {
 
     let smellCount = 0;
