@@ -3,6 +3,8 @@ html, body{
     width: 100%;
     overflow: hidden;
     margin: 0px;
+    cursor:crosshair;
+   
 }
 
 body {
@@ -34,6 +36,8 @@ body {
     fixed,
     fixed,
     fixed;
+
+
 }
 
 footer{
