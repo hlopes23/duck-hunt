@@ -1,5 +1,7 @@
+import { posXDiagonalDuck } from "./duck.js";
+import { posYDiagonalDuck } from "./duck.js";
 
-function move() {
+export function moveDog() {
 
 
   interval = setInterval(() => {
@@ -10,6 +12,7 @@ function move() {
       clearInterval(interval);
       smell();   
       setTimeout(jump,1000);
+      return;
     }
 
 
@@ -17,7 +20,7 @@ function move() {
       stopMiddle = true;
       clearInterval(interval);
       smell();
-      setTimeout (move, 1000);
+      setTimeout (moveDog, 1000);
       return;
     }
 
@@ -90,7 +93,7 @@ function jump() {
       dog.style.backgroundPosition = `${positionX}px ${positionY}px`;
       dog.style.width = `${width}px`;
       dog.style.height = `${height}px`;
-      dog.style.transform = `translate3d(900px, -250px, -150px) scale(3.5)`;
+      dog.style.transform = `translate3d(900px, ${-herbsHeight}px, -150px) scale(3.5)`;
       frameIndex++;
       break;
 
@@ -100,18 +103,32 @@ function jump() {
         dog.style.height = `${height}px`;
         dog.style.transform = `translate3d(1010px, 0px, -0px) scale(3.5)`;
         dog.style.zIndex = 0;
-        frameIndex++;
+        clearInterval(interval);
         break;
-
     }
-  }, 400);
+  }, 300);
 }
 
 
+export function catchDuck() {
+	
+  if (posYDiagonalDuck >= footerHeight){
+
+  xTranslate = posXDiagonalDuck || 0;
+  dog.style.right = `${xTranslate}px`; 
+
+  interval = setInterval( () => {
+  dog.classList.add('dogWithDuck');
+  dog.style.backgroundPosition = `${catchDuckPositions[0].x}px ${catchDuckPositions[0].y}px`;
+  dog.style.width = `${catchDuckPositions[0].w}px`;
+  dog.style.height = `${catchDuckPositions[0].h}px`;
+  
+}, 300);
+}
+}
+
 
 // -- variables -- 
-
-
 
 let positionsAndSize = [
   { x: -5, y: -1, w: 55, h: 43 },
@@ -127,12 +144,20 @@ let jumpPositions = [
   { x: -135, y: -67, w: 55, h: 50 }
 ];
 
+let catchDuckPositions = [
+  { x: -332, y: -3, w: 55, h: 50 }, //1 duck
+  { x: -319, y: -69, w: 55, h: 50 }, // 2 ducks
+]
 
+
+let herbs = document.getElementById('herbs');
+export let herbsHeight = herbs.offsetHeight;
 let dog = document.createElement("div");
 let playground = document.getElementById("path");
 dog.setAttribute("id", "dog");
 playground.appendChild(dog);
 let interval;
+export let footerHeight = document.querySelector('footer').offsetHeight;
 let frameIndex = 0;
 let positionX = 0;
 let positionY = 0;
@@ -141,9 +166,4 @@ let height = 0;
 let playgroundWidth = playground.offsetWidth;
 let dogWidth = dog.offsetWidth;
 let xTranslate = 0;
-let yTranslate = 0;
-let zTranslate = 0;
 let stopMiddle = false;
-
-
-move();

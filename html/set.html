@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Duck Hunt</title>
     <link rel="stylesheet" href="/style/gamestyle.css" />
-    <script type="module" src="/script/game.js" async></script>
-    <script type="module" src="/script/sprite.js" async></script>
     <script type="module" src="/script/dog.js" async></script>
+    <script type="module" src="/script/game.js" async></script>
+    <script type="module" src="/script/duck.js" async></script>
+     
   </head>
   <body>
     <header></header>
     <main>
       <section id="herbs">
-        <img src="/img/herbs.webp" alt="herbs" />
+        <img src="/img/herbs.png" alt="herbs" />
       </section>
       <section id="path"></section>
     </main>
@@ -26,13 +27,13 @@
       </section>
       <section id="container1">
         <article class="bullets">
-          <div id="bullet">
+          <div class="bullet">
             <img src="/img/bullet.png" alt="bullet 1" />
           </div>
-          <div id="bullet">
+          <div class="bullet">
             <img src="/img/bullet.png" alt="bullet 2" />
           </div>
-          <div id="bullet">
+          <div class="bullet">
             <img src="/img/bullet.png" alt="bullet 3" />
           </div>
         </article>
@@ -59,7 +60,7 @@
       </section>
       <section id="container3">
         <article class="points"></article>
-        <article class="score">
+        <article class="scoreElement">
           <img src="/img/score.png" alt="SCORE" />
         </article>
       </section>
