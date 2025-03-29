@@ -219,6 +219,6 @@ let interval;
 let frameIndex = 0;
 export let posXDiagonalDuck = window.innerWidth - 210 * 2.0;
 export let posYDiagonalDuck = window.innerHeight - 150 * 2.0;
-let movementDirection = 1;
+let movementDirection = 2;
 let scoreNumber = 0;
 let numberOfShots = 3;
