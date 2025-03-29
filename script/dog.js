@@ -114,8 +114,8 @@ export function catchDuck() {
 	
   if (posYDiagonalDuck >= footerHeight){
 
-  xTranslate = posXDiagonalDuck || 0;
-  dog.style.right = `${xTranslate}px`; 
+  xTranslate = posXDiagonalDuck ?? 0;
+  dog.style.left = `${xTranslate}px`; 
 
   interval = setInterval( () => {
   dog.classList.add('dogWithDuck');

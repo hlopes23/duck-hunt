@@ -49,11 +49,6 @@ function shots() {
             break;
         }
     }
-
-	if (hitDuck == true && bullet.style.visibility == "hidden"){
-		numberOfShots = 3;
-		bullet.forEach(bullet => bullet.style.visibility = "visible"); 
-	}
 }
 
 function score() {
