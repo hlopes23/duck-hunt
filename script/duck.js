@@ -144,8 +144,8 @@ export function moveDuck() {
 			if (
 				posXDiagonalDuck <= 0 ||
 				posXDiagonalDuck >= window.innerWidth - 32 * 2.0 ||
-				posYDiagonalDuck <= 0 && posYDiagonalDuck >= herbsHeight ||
-				posYDiagonalDuck >= window.innerHeight - 31 * 2.0
+				posYDiagonalDuck < herbsHeight ||
+				posYDiagonalDuck > window.innerHeight 
 			) {
 				movementDirection *= -1;
 

@@ -19,6 +19,10 @@ export let randomMoves = [
 export let randomIndex; 
 console.log(randomIndex)
 let counter = 0;
+let roundNumber = 1;
+
+let duckKill=0;
+
 
 function startDuck() {
 
@@ -37,6 +41,21 @@ function barkingSound () {
 	music.play();
 }
 
+function nextRound () {
+
+	const round = document.getElementById("numberOfRounds");
+    round.textContent= `${roundNumber}`;
+	let roundContainer = document.getElementById("container");
+	roundContainer.prepend(round);
+
+    if (duckKill = 10) {
+		roundNumber++;
+    }
+}
+
+
+
 setTimeout(barkingSound, 6500);
 moveDog();
 setTimeout(startDuck, 9000);
+nextRound();
