@@ -1,7 +1,6 @@
-import { randomMoves } from "./game.js";
+import { randomMoves, startDuck } from "./game.js";
 import { catchDuck, herbsHeight } from "./dog.js";
 import { randomIndex } from "./game.js";
-
 
 export const positionAndSizeDiagonalDuck = [
 	{ x: -134, y: -157, w: 32, h: 31 },
@@ -29,13 +28,13 @@ export function createDuckElement() {
 	return duck;
 }
 
-
 function redDuck() {
 	const duckIcon = document.querySelectorAll(".icon");
-	for (let ducks of duckIcon) {
-		if (ducks.src !== "/img/redDuck.png") {
-			ducks.src = "/img/redDuck.png";
-			break;
+	for (let i = 0; i < duckIcon.length; i++) {
+		if (duckIcon[i].src.indexOf("/img/redDuck.png") === -1) {
+			duckIcon[i].src = "/img/redDuck.png";
+			duckKill++;
+			return;
 		}
 	}
 }
@@ -52,7 +51,7 @@ function shots() {
 
 	if (hitDuck == true && bullet.style.visibility == "hidden") {
 		numberOfShots = 3;
-		bullet.forEach(bullet => bullet.style.visibility = "visible");
+		bullet.forEach((bullet) => (bullet.style.visibility = "visible"));
 	}
 }
 
@@ -86,8 +85,7 @@ function flappingSound() {
 }
 
 document.addEventListener("click", () => {
-	failedShots(),
-		shotSound()
+	failedShots(), shotSound();
 });
 
 function failedShots() {
@@ -100,7 +98,7 @@ function failedShots() {
 		gameOver.style.position = "absolute";
 		gameOver.style.top = "50%";
 		gameOver.style.left = "40%";
-		gameOver.style.fontSize = "50px"
+		gameOver.style.fontSize = "50px";
 		document.body.appendChild(gameOver);
 	}
 }
@@ -112,25 +110,17 @@ function freezeGame() {
 	duck.style.animationPlayState = "paused";
 }
 
-
-
 export function moveDuck() {
 	const duck = document.getElementById("duck") || createDuckElement();
 	let currentMove = randomMoves[randomIndex];
 
 	flappingSound();
 
-
 	duck.addEventListener("click", () => {
 		hitDuck = true;
 		shotSound();
-		duckFallingSound(),
-			fallingDuck(),
-			redDuck(),
-			score(),
-			windowScore()
-	}
-	);
+		duckFallingSound(), fallingDuck(), redDuck(), score(), windowScore();
+	});
 
 	interval = setInterval(() => {
 		if (frameIndex < currentMove.pos.length) {
@@ -144,7 +134,7 @@ export function moveDuck() {
 			if (
 				posXDiagonalDuck <= 0 ||
 				posXDiagonalDuck >= window.innerWidth - 32 * 2.0 ||
-				posYDiagonalDuck <= 0 && posYDiagonalDuck >= herbsHeight ||
+				(posYDiagonalDuck <= 0 && posYDiagonalDuck >= herbsHeight) ||
 				posYDiagonalDuck >= window.innerHeight - 31 * 2.0
 			) {
 				movementDirection *= -1;
@@ -199,20 +189,25 @@ export function fallingDuck() {
 			duck.style.visibility = "hidden";
 			catchDuck();
 			setTimeout(duckCaughtSound(), 1000);
+			document.body.removeChild(duck);
+			hitDuck = false;
+			posXDiagonalDuck = window.innerWidth - 210 * 2.0;
+			posYDiagonalDuck = window.innerHeight - 150 * 2.0;
+			setTimeout(startDuck, 2000);
 		}
 	}, 25);
 }
 
-function windowScore () {
+function windowScore() {
 	duck.textContent = "500";
 	duck.style.color = "white";
-	duck.style.fontWeight="bold";
-	duck.style.fontSize ="10px";
+	duck.style.fontWeight = "bold";
+	duck.style.fontSize = "10px";
 
 	document.body.appendChild(score);
 }
 
-
+let duckKill = 0;
 let hitDuck = false;
 let currentFrame;
 let interval;

@@ -20,7 +20,7 @@ export let randomIndex;
 console.log(randomIndex)
 let counter = 0;
 
-function startDuck() {
+export function startDuck() {
 
 	randomIndex = Math.floor(Math.random() * randomMoves.length);
 
