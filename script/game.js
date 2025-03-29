@@ -24,7 +24,7 @@ let roundNumber = 1;
 let duckKill=0;
 
 
-function startDuck() {
+export function startDuck() {
 
 	randomIndex = Math.floor(Math.random() * randomMoves.length);
 
