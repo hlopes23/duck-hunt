@@ -123,6 +123,7 @@ export function moveDuck() {
 
 	duck.addEventListener("click", () => {
 		hitDuck = true;
+		deadDucks++;
 		shotSound();
 		duckFallingSound(),
 			fallingDuck(),
@@ -211,6 +212,7 @@ function windowScore () {
 
 	document.body.appendChild(score);
 }
+
 
 
 let hitDuck = false;
