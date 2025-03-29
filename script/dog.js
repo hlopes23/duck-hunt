@@ -123,7 +123,7 @@ export function catchDuck() {
   dog.style.width = `${catchDuckPositions[0].w}px`;
   dog.style.height = `${catchDuckPositions[0].h}px`;
   
-}, 300);
+}, 200);
 }
 }
 

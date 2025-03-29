@@ -51,7 +51,7 @@ z-index:1;
 
 
 .dogWithDuck{
-    animation: catchDuck 1s ease-in 2 alternate;
+    animation: catchDuck 1s ease-out 2 alternate;
 }
 
 @keyframes catchDuck {
