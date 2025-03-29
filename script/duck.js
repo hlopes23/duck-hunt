@@ -58,7 +58,7 @@ function shots() {
 
 function score() {
 	scoreNumber += 500;
-	let points = document.querySelector(".scoreElement");
+	let points = document.querySelector(".points");
 	points.style.fontSize = "24px";
 	points.style.fontWeight = "bold";
 	points.style.color = "white";
@@ -70,17 +70,17 @@ function shotSound() {
 	music.play();
 }
 
-function duckCaughtSound () {
+function duckCaughtSound() {
 	let music = document.getElementById("duckCaught");
 	music.play();
 }
 
-function duckFallingSound () {
+function duckFallingSound() {
 	let music = document.getElementById("deadDuckFalling");
 	music.play();
 }
 
-function flappingSound () {
+function flappingSound() {
 	let music = document.getElementById("flappingSound");
 	music.play();
 }
@@ -125,9 +125,10 @@ export function moveDuck() {
 		hitDuck = true;
 		shotSound();
 		duckFallingSound(),
-		fallingDuck(),
+			fallingDuck(),
 			redDuck(),
-			score()
+			score(),
+			windowScore()
 	}
 	);
 
@@ -170,15 +171,17 @@ export function fallingDuck() {
 	clearInterval(interval);
 	const duck = document.getElementById("duck") || createDuckElement();
 	let frameIndex = 0;
-	console.log("morreu");
+
 	let positionDuck = [
 		{ x: -131, y: -238 },
 		{ x: -178, y: -237 },
 	];
 
+	duck.style.backgroundPosition = `${positionDuck[0].x}px ${positionDuck[0].y}px`;
+
 	const fallingInterval = setInterval(() => {
 		if (frameIndex < positionDuck.length) {
-			const currentFrame = positionDuck[frameIndex];
+			const currentFrame = positionDuck[1];
 			duck.style.backgroundPosition = `${currentFrame.x}px ${currentFrame.y}px`;
 			frameIndex++;
 			posYDiagonalDuck += 15;
@@ -198,6 +201,15 @@ export function fallingDuck() {
 			setTimeout(duckCaughtSound(), 1000);
 		}
 	}, 25);
+}
+
+function windowScore () {
+	duck.textContent = "500";
+	duck.style.color = "white";
+	duck.style.fontWeight="bold";
+	duck.style.fontSize ="10px";
+
+	document.body.appendChild(score);
 }
 
 
