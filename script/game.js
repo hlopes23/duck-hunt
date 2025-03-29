@@ -25,7 +25,6 @@ function startDuck() {
 	randomIndex = Math.floor(Math.random() * randomMoves.length);
 
 if( counter == 0 && randomIndex == 4 || randomIndex == 5 || randomIndex == 6){
-    console.log("entrou")
  moveDuck();
  counter++;
 } else {
@@ -33,6 +32,11 @@ if( counter == 0 && randomIndex == 4 || randomIndex == 5 || randomIndex == 6){
 }
 }
 
+function barkingSound () {
+	let music = document.getElementById("barking");
+	music.play();
+}
 
+setTimeout(barkingSound, 6500);
 moveDog();
 setTimeout(startDuck, 9000);
