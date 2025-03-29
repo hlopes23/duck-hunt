@@ -1,6 +1,7 @@
 import { randomMoves, startDuck } from "./game.js";
 import { catchDuck, herbsHeight } from "./dog.js";
 import { randomIndex } from "./game.js";
+import { randomindexduck } from "./game.js";
 
 export const positionAndSizeDiagonalDuck = [
 	{ x: -134, y: -157, w: 32, h: 31 },
@@ -112,9 +113,9 @@ function freezeGame() {
 
 export function moveDuck() {
 	const duck = document.getElementById("duck") || createDuckElement();
-	let currentMove = randomMoves[randomIndex];
-
-	flappingSound();
+    let currentMove = randomMoves[randomIndex];
+	chooseduckMove();
+   flappingSound();
 
 	duck.addEventListener("click", () => {
 		hitDuck = true;
@@ -125,6 +126,7 @@ export function moveDuck() {
 	interval = setInterval(() => {
 		if (frameIndex < currentMove.pos.length) {
 			currentFrame = currentMove.pos[frameIndex];
+            currentMove = randomMoves[randomIndex];
 			duck.style.backgroundPosition = `${currentFrame.x}px ${currentFrame.y}px`;
 			frameIndex++;
 
@@ -134,10 +136,14 @@ export function moveDuck() {
 			if (
 				posXDiagonalDuck <= 0 ||
 				posXDiagonalDuck >= window.innerWidth - 32 * 2.0 ||
-				(posYDiagonalDuck <= 0 && posYDiagonalDuck >= herbsHeight) ||
+				posYDiagonalDuck <= 0 ||
+				posYDiagonalDuck < herbsHeight - 32 * 2.0 ||
 				posYDiagonalDuck >= window.innerHeight - 31 * 2.0
 			) {
+                
 				movementDirection *= -1;
+                randomindexduck();
+                console.log(randomIndex);   
 
 				duck.style.transform = `
                     translate(${posXDiagonalDuck}px, ${posYDiagonalDuck}px) 
@@ -207,12 +213,22 @@ function windowScore() {
 	document.body.appendChild(score);
 }
 
+function chooseduckMove() {
+	let random1stMove = Math.round(Math.random());
+	if (random1stMove == 1) {
+		posXDiagonalDuck = window.innerWidth - 210 * 2.0;
+	} else {
+		posXDiagonalDuck = window.innerWidth - 800 * 2.0;
+	}
+}
+
+
 let duckKill = 0;
 let hitDuck = false;
 let currentFrame;
 let interval;
 let frameIndex = 0;
-export let posXDiagonalDuck = window.innerWidth - 210 * 2.0;
+export let posXDiagonalDuck;
 export let posYDiagonalDuck = window.innerHeight - 150 * 2.0;
 let movementDirection = 2;
 let scoreNumber = 0;

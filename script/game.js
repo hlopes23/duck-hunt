@@ -17,12 +17,16 @@ export let randomMoves = [
 ];
 
 export let randomIndex; 
-console.log(randomIndex)
+
 let counter = 0;
+
+export function randomindexduck(){
+    randomIndex = Math.floor(Math.random() * randomMoves.length);
+}
 
 export function startDuck() {
 
-	randomIndex = Math.floor(Math.random() * randomMoves.length);
+	randomindexduck();
 
 if( counter == 0 && randomIndex == 4 || randomIndex == 5 || randomIndex == 6){
  moveDuck();
