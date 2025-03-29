@@ -23,7 +23,7 @@ export function createDuckElement() {
 	duck.style.height = "31px";
 	duck.style.transform = "scale(2.0) scaleX(-1)";
 	duck.style.transformOrigin = "bottom left";
-	duck.style.zIndex = "10";
+	duck.style.zIndex = "0";
 	document.body.appendChild(duck);
 	return duck;
 }
