@@ -117,6 +117,7 @@ export function moveDuck() {
 	flappingSound();
 
 	duck.addEventListener("click", () => {
+		duckKill++;
 		hitDuck = true;
 		shotSound();
 		duckFallingSound(), fallingDuck(), redDuck(), score(), windowScore();
@@ -207,7 +208,7 @@ function windowScore() {
 	document.body.appendChild(score);
 }
 
-let duckKill = 0;
+export let duckKill = 0;
 let hitDuck = false;
 let currentFrame;
 let interval;

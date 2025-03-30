@@ -2,6 +2,7 @@ import {moveDuck} from "./duck.js";
 import { positionAndSizeDiagonalDuck } from "./duck.js";
 import { positionAndSizeTurningDuck } from "./duck.js";
 import { moveDog } from "./dog.js";
+import { duckKill } from "./duck.js";
 
 
 
@@ -20,8 +21,6 @@ export let randomIndex;
 console.log(randomIndex)
 let counter = 0;
 let roundNumber = 1;
-
-let duckKill=0;
 
 
 export function startDuck() {
@@ -43,14 +42,16 @@ function barkingSound () {
 
 function nextRound () {
 
+	if (duckKill == 10) {
+		roundNumber++;
+    }
+	
 	const round = document.getElementById("numberOfRounds");
     round.textContent= `${roundNumber}`;
 	let roundContainer = document.getElementById("container");
 	roundContainer.prepend(round);
 
-    if (duckKill = 10) {
-		roundNumber++;
-    }
+    
 }
 
 
