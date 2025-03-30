@@ -113,9 +113,9 @@ function freezeGame() {
 
 export function moveDuck() {
 	const duck = document.getElementById("duck") || createDuckElement();
-    let currentMove = randomMoves[randomIndex];
+	let currentMove = randomMoves[randomIndex];
 	chooseduckMove();
-   flappingSound();
+	flappingSound();
 
 	duck.addEventListener("click", () => {
 		duckKill++;
@@ -127,7 +127,7 @@ export function moveDuck() {
 	interval = setInterval(() => {
 		if (frameIndex < currentMove.pos.length) {
 			currentFrame = currentMove.pos[frameIndex];
-            currentMove = randomMoves[randomIndex];
+			currentMove = randomMoves[randomIndex];
 			duck.style.backgroundPosition = `${currentFrame.x}px ${currentFrame.y}px`;
 			frameIndex++;
 
@@ -141,10 +141,8 @@ export function moveDuck() {
 				posYDiagonalDuck < herbsHeight - 32 * 2.0 ||
 				posYDiagonalDuck >= window.innerHeight - 31 * 2.0
 			) {
-                
 				movementDirection *= -1;
-                randomindexduck();
-                console.log(randomIndex);   
+				setTimeout(randomindexduck, 7000);
 
 				duck.style.transform = `
                     translate(${posXDiagonalDuck}px, ${posYDiagonalDuck}px) 
@@ -223,8 +221,7 @@ function chooseduckMove() {
 	}
 }
 
-
-export let duckKill = 0;
+let duckKill = 0;
 let hitDuck = false;
 let currentFrame;
 let interval;
