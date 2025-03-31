@@ -1,7 +1,8 @@
 import { randomMoves, startDuck } from "./game.js";
-import { catchDuck, herbsHeight } from "./dog.js";
+import { catchDuck } from "./dog.js";
 import { randomIndex } from "./game.js";
 import { randomindexduck } from "./game.js";
+import { killedDucks } from "./game.js";
 
 export const positionAndSizeDiagonalDuck = [
 	{ x: -134, y: -157, w: 32, h: 31 },
@@ -29,22 +30,19 @@ export function createDuckElement() {
 	return duck;
 }
 
-function redDuck() {
-    const duckIcon = document.querySelectorAll(".icon");
-    for (let i = 0; i < duckIcon.length; i++) {
-        if (duckIcon[i].src.indexOf("/img/redDuck.png") === -1) {
-            duckIcon[i].src = "/img/redDuck.png";
-            duckKill++;
-            return;
-        }
-    }
+
+	function redDuck() {
+		let duckIcon = document.querySelectorAll(".icon");
+
 	
-    if(killedDucks == 10) {
-            duckIcon.forEach(duckIcon => {
-                duckIcon.src = "img/duckIcon.png";
-            })
-        }
-    }
+		for (let i = 0; i < duckIcon.length; i++) {
+			if (!duckIcon[i].src.includes("/img/redDuck.png")) { 
+				duckIcon[i].src = "/img/redDuck.png";
+				duckKill++; 
+				return; 
+			}
+		}
+	}
 
 function shots() {
     numberOfShots--;
@@ -53,12 +51,14 @@ function shots() {
         if (bullets.style.visibility != "hidden") {
             bullets.style.visibility = "hidden";
             break;
-        }
+        } 
     }
+	
     if (hitDuck) {
         bullet.forEach(bullet => {
             bullet.style.visibility = "visible";
-        })
+        });
+		redDuck();
     }
 }
 
@@ -69,6 +69,8 @@ function score() {
 	points.style.fontWeight = "bold";
 	points.style.color = "white";
 	points.textContent = `${scoreNumber}`;
+
+	document.body.appendChild(score);
 }
 
 function shotSound() {
@@ -91,11 +93,12 @@ function flappingSound() {
 	music.play();
 }
 
-document.addEventListener("click", () => {
-	failedShots(), shotSound();
+document.addEventListener("click", () => { 
+	shotSound();
+	gameOver();
 });
 
-function failedShots() {
+function gameOver() {
 	shots();
 	if (numberOfShots <= 0) {
 		freezeGame();
@@ -110,12 +113,12 @@ function failedShots() {
 	}
 }
 
-/* function freezeGame() {
-	document.removeEventListener("click", failedShots);
+function freezeGame() {
+	document.removeEventListener("click", failedShots());
 	clearInterval(interval);
 
 	duck.style.animationPlayState = "paused";
-}*/
+}
 
 export function moveDuck() {
 	const duck = document.getElementById("duck") || createDuckElement();
@@ -123,10 +126,17 @@ export function moveDuck() {
 	chooseduckMove();
 	flappingSound();
 
+		
+	if (killedDucks >= 9 && !duckIcon[0].src.includes("/img/duckIcon.png")) {
+		duckIcon.forEach(duck => duck.src = "/img/duckIcon.png");
+	}
+
 	duck.addEventListener("click", () => {
-		hitDuck = true;
-		shotSound();
-		duckFallingSound(), fallingDuck(), redDuck(), score(), windowScore();
+		hitDuck = true
+		fallingDuck(),
+		score(),
+		shotSound(),
+		duckFallingSound()
 	});
 
 	interval = setInterval(() => {
@@ -143,7 +153,6 @@ export function moveDuck() {
 				posXDiagonalDuck <= 0 ||
 				posXDiagonalDuck >= window.innerWidth - 32 * 2.0 ||
 				posYDiagonalDuck <= 0 ||
-				posYDiagonalDuck < herbsHeight - 32 * 2.0 ||
 				posYDiagonalDuck >= window.innerHeight - 31 * 2.0
 			) {
 				movementDirection *= -1;
@@ -166,6 +175,8 @@ export function moveDuck() {
 		}
 	}, 80);
 }
+
+
 
 export function fallingDuck() {
 	clearInterval(interval);
@@ -209,14 +220,6 @@ export function fallingDuck() {
 	}, 25);
 }
 
-function windowScore() {
-	duck.textContent = "500";
-	duck.style.color = "white";
-	duck.style.fontWeight = "bold";
-	duck.style.fontSize = "10px";
-
-	document.body.appendChild(score);
-}
 
 function chooseduckMove() {
 	let random1stMove = Math.round(Math.random());
@@ -227,14 +230,12 @@ function chooseduckMove() {
 	}
 }
 
-let duckKill = 0;
 let hitDuck = false;
 let currentFrame;
 let interval;
 let frameIndex = 0;
-export let posXDiagonalDuck;
+export let posXDiagonalDuck = 0;
 export let posYDiagonalDuck = window.innerHeight - 150 * 2.0;
 let movementDirection = 2;
 let scoreNumber = 0;
 let numberOfShots = 3;
-let killedDucks = 0;

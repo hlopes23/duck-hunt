@@ -1,8 +1,7 @@
-import {moveDuck} from "./duck.js";
+import { moveDuck } from "./duck.js";
 import { positionAndSizeDiagonalDuck } from "./duck.js";
 import { positionAndSizeTurningDuck } from "./duck.js";
 import { moveDog } from "./dog.js";
-
 
 
 export let randomMoves = [
@@ -16,12 +15,8 @@ export let randomMoves = [
 	{ x: -15, y: 0, pos: positionAndSizeDiagonalDuck },
 ];
 
-export let randomIndex; 
-
-let counter = 0;
-
 export function randomindexduck(){
-    randomIndex = Math.floor(Math.random() * randomMoves.length);
+	return randomIndex = Math.floor(Math.random() * randomMoves.length);
 }
 
 export function startDuck() {
@@ -45,21 +40,23 @@ function barkingSound () {
 function rounds () {
     const points = document.getElementById("numberOfRounds");
     points.textContent = `${numberOfRounds}`;
-    points.style.fontSize="16px";
-    points.style.color = "green";
-    points.style.fontWeight = "bold";
 }
+
 function nextRound () {
     if(killedDucks == 10) {
         numberOfRounds ++;
+		killedDucks = 0;
     }
 }
+
+let counter = 0;
 let numberOfRounds = 1;
-let killedDucks = 0;
+export let killedDucks = 0;
+export let randomIndex; 
 
 
+moveDog();
 rounds();
 nextRound();
 setTimeout(barkingSound, 6500);
-moveDog();
 setTimeout(startDuck, 9000);

@@ -3,7 +3,6 @@ import { posYDiagonalDuck } from "./duck.js";
 
 export function moveDog() {
 
-
   interval = setInterval(() => {
     let middle = (playgroundWidth - dogWidth) / 2;
     let end = playgroundWidth - dogWidth
@@ -67,7 +66,6 @@ function smell() {
 }, 140);
 }
 
-
 function jump() {
 
   dog.classList.add('transition');
@@ -109,19 +107,18 @@ function jump() {
   }, 300);
 }
 
-
 export function catchDuck() {
  
   xTranslate = posXDiagonalDuck ?? 0;
   dog.style.left = `${xTranslate}px`; 
 
-  interval = setInterval( () => {
+  interval = setTimeout( () => {
   dog.classList.add('dogWithDuck');
   dog.style.backgroundPosition = `${catchDuckPositions[0].x}px ${catchDuckPositions[0].y}px`;
   dog.style.width = `${catchDuckPositions[0].w}px`;
   dog.style.height = `${catchDuckPositions[0].h}px`;
   
-}, 200);
+}, 100);
 }
 
 
