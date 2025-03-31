@@ -1,8 +1,8 @@
 body {
     background-color: rgba(0, 0, 0, 1);
-    height: 95vh;
+    height: 90vh;
     flex-flow: column wrap;
-    color: salmon
+  
 }
 
 body * {
@@ -75,9 +75,10 @@ footer > img {
     flex-basis: 15%;
     justify-content: flex-end;
     align-items: center;
+    visibility: hidden;
 }
 
-.pointer > img {
+.pointerImg {
     width: 20%;
     height: 35%;
 }
@@ -115,6 +116,7 @@ footer > img {
     border-bottom: 5px solid rgb(233, 161, 44);
     align-items: flex-end;
 }
+
 
 
 .hunt{
