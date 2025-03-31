@@ -203,6 +203,7 @@ export function fallingDuck() {
 			hitDuck = false;
 			posXDiagonalDuck = window.innerWidth - 210 * 2.0;
 			posYDiagonalDuck = window.innerHeight - 150 * 2.0;
+			dog.classList.remove("dogWithDuck");
 			setTimeout(startDuck, 2000);
 		}
 	}, 25);
