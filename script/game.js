@@ -41,6 +41,25 @@ function barkingSound () {
 	music.play();
 }
 
+
+function rounds () {
+    const points = document.getElementById("numberOfRounds");
+    points.textContent = `${numberOfRounds}`;
+    points.style.fontSize="16px";
+    points.style.color = "green";
+    points.style.fontWeight = "bold";
+}
+function nextRound () {
+    if(killedDucks == 10) {
+        numberOfRounds ++;
+    }
+}
+let numberOfRounds = 1;
+let killedDucks = 0;
+
+
+rounds();
+nextRound();
 setTimeout(barkingSound, 6500);
 moveDog();
 setTimeout(startDuck, 9000);

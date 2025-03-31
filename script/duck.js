@@ -30,16 +30,21 @@ export function createDuckElement() {
 }
 
 function redDuck() {
-	const duckIcon = document.querySelectorAll(".icon");
-	for (let i = 0; i < duckIcon.length; i++) {
-		if (duckIcon[i].src.indexOf("/img/redDuck.png") === -1) {
-			duckIcon[i].src = "/img/redDuck.png";
-			duckKill++;
-			hitDuck = true;
-			return;
-		}
-	}
-}
+    const duckIcon = document.querySelectorAll(".icon");
+    for (let i = 0; i < duckIcon.length; i++) {
+        if (duckIcon[i].src.indexOf("/img/redDuck.png") === -1) {
+            duckIcon[i].src = "/img/redDuck.png";
+            duckKill++;
+            return;
+        }
+    }
+	
+    if(killedDucks == 10) {
+            duckIcon.forEach(duckIcon => {
+                duckIcon.src = "img/duckIcon.png";
+            })
+        }
+    }
 
 function shots() {
     numberOfShots--;
@@ -231,3 +236,4 @@ export let posYDiagonalDuck = window.innerHeight - 150 * 2.0;
 let movementDirection = 2;
 let scoreNumber = 0;
 let numberOfShots = 3;
+let killedDucks = 0;
