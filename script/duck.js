@@ -35,25 +35,26 @@ function redDuck() {
 		if (duckIcon[i].src.indexOf("/img/redDuck.png") === -1) {
 			duckIcon[i].src = "/img/redDuck.png";
 			duckKill++;
+			hitDuck = true;
 			return;
 		}
 	}
 }
 
 function shots() {
-	numberOfShots--;
-	const bullet = document.querySelectorAll(".bullet");
-	for (let bullets of bullet) {
-		if (bullets.style.visibility != "hidden") {
-			bullets.style.visibility = "hidden";
-			break;
-		}
-	}
-
-	if (hitDuck == true && bullet.style.visibility == "hidden") {
-		numberOfShots = 3;
-		bullet.forEach((bullet) => (bullet.style.visibility = "visible"));
-	}
+    numberOfShots--;
+    const bullet = document.querySelectorAll(".bullet");
+    for (let bullets of bullet) {
+        if (bullets.style.visibility != "hidden") {
+            bullets.style.visibility = "hidden";
+            break;
+        }
+    }
+    if (hitDuck) {
+        bullet.forEach(bullet => {
+            bullet.style.visibility = "visible";
+        })
+    }
 }
 
 function score() {
@@ -104,12 +105,12 @@ function failedShots() {
 	}
 }
 
-function freezeGame() {
+/* function freezeGame() {
 	document.removeEventListener("click", failedShots);
 	clearInterval(interval);
 
 	duck.style.animationPlayState = "paused";
-}
+}*/
 
 export function moveDuck() {
 	const duck = document.getElementById("duck") || createDuckElement();

@@ -111,8 +111,7 @@ function jump() {
 
 
 export function catchDuck() {
-  if (posYDiagonalDuck >= footerHeight){
-    
+ 
   xTranslate = posXDiagonalDuck ?? 0;
   dog.style.left = `${xTranslate}px`; 
 
@@ -124,7 +123,7 @@ export function catchDuck() {
   
 }, 200);
 }
-}
+
 
 
 // -- variables -- 
