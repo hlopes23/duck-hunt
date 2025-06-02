@@ -1,6 +1,6 @@
 # Duck Hunt
 
-A fun, interactive web-based version of the classic Duck Hunt game.
+A group project with the purpose of making a fun, interactive web-based version of the classic Duck Hunt game.
 
 ## Features
 
